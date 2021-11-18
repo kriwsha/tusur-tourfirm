@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>bva.tusur.dz</groupId>
+        <artifactId>tusur-tourfirm</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>tour-db</artifactId>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <liquibase.property.file>liquibase.properties</liquibase.property.file>
+        <liquibase.changelog.schema.name>tourfirm</liquibase.changelog.schema.name>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <propertyFile>src/main/resources/${liquibase.property.file}</propertyFile>
+                    <changelogSchemaName>${liquibase.changelog.schema.name}</changelogSchemaName>
+                    <databaseChangeLogTableName>TOUR_FIRM_DB_CHANGE_LOG</databaseChangeLogTableName>
+                    <databaseChangeLogLockTableName>TOUR_FIRM_DB_CHANGE_LOG_LOCK</databaseChangeLogLockTableName>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
