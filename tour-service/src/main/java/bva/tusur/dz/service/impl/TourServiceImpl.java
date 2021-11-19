@@ -1,7 +1,8 @@
-package bva.tusur.dz.service;
+package bva.tusur.dz.service.impl;
 
 import bva.tusur.dz.dto.TourDto;
-import bva.tusur.dz.repositories.Repository;
+import bva.tusur.dz.repositories.ToursRepository;
+import bva.tusur.dz.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +11,10 @@ import java.util.List;
 @Service
 public class TourServiceImpl implements TourService {
 
-    private final Repository repo;
+    private final ToursRepository repo;
 
     @Autowired
-    public TourServiceImpl(Repository repo) {
+    public TourServiceImpl(ToursRepository repo) {
         this.repo = repo;
     }
 

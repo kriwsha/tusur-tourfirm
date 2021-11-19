@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class Repository {
+public class ToursRepository {
 
     @Qualifier("DSLContext")
     private DSLContext jooq;
 
     @Autowired
-    public Repository(DSLContext dlsContext) {
+    public ToursRepository(DSLContext dlsContext) {
         this.jooq = dlsContext;
     }
 

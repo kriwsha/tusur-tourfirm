@@ -1,5 +1,6 @@
-package bva.tusur.dz.dto;
+package bva.tusur.dz.dto.rs;
 
+import bva.tusur.dz.dto.TourDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
