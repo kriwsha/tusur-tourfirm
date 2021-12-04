@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -20,6 +21,8 @@ public class ToursRepository {
     }
 
     public List<TourDto> getAvailableTours() {
-        throw new UnsupportedOperationException("not implemented");
+        // TODO: 04.12.2021 for test
+        return Collections.singletonList(
+                new TourDto("Russia", "Moscow", "1000", "10.12-12.12"));
     }
 }

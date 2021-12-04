@@ -1,7 +1,6 @@
 package bva.tusur.dz.rest;
 
 import bva.tusur.dz.dto.rq.CreateClientRequest;
-import bva.tusur.dz.dto.rq.GetClientInfoRequest;
 import bva.tusur.dz.dto.rs.GetClientInfoResponse;
 import bva.tusur.dz.service.ClientService;
 import io.swagger.annotations.Api;
@@ -34,14 +33,18 @@ public class ClientRest {
                     request.getPhoneNumber());
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("not released");
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(e.getMessage());
         }
     }
 
-    @PostMapping("/get")
+    @GetMapping("/get_client")
     @ApiOperation("Получение информации о клиенте")
-    public GetClientInfoResponse getClientInfo(@RequestBody GetClientInfoRequest request) {
-        return clientService.getClientByRequest(request.getName(), request.getPhoneNumber());
+    public GetClientInfoResponse getClientInfo(
+            @RequestParam("name") String name,
+            @RequestParam("phone_number") String phoneNumber) {
+        return clientService.getClientByRequest(name, phoneNumber);
     }
 
 }

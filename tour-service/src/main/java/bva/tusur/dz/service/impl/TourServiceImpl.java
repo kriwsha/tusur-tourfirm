@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Сервис для работы с турами
+ */
 @Service
 public class TourServiceImpl implements TourService {
 
@@ -18,6 +21,11 @@ public class TourServiceImpl implements TourService {
         this.repo = repo;
     }
 
+    /**
+     * Получить все актуальные туры
+     *
+     * @return ...
+     */
     @Override
     public List<TourDto> getCurrentTours() {
         return repo.getAvailableTours();
