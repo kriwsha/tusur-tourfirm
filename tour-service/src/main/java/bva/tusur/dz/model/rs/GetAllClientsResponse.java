@@ -1,6 +1,5 @@
-package bva.tusur.dz.dto.rs;
+package bva.tusur.dz.model.rs;
 
-import bva.tusur.dz.dto.TourDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,8 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain = true)
-public class GetAllToursResponse {
-
-    @JsonProperty("tour_list")
-    private List<TourDto> tourList;
+public class GetAllClientsResponse {
+    @JsonProperty("clients")
+    private List<GetClientInfoResponse> clients;
 }

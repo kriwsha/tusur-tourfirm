@@ -1,6 +1,6 @@
 package bva.tusur.dz.service;
 
-import bva.tusur.dz.dto.TourDto;
+import bva.tusur.dz.model.dto.TourDto;
 
 import java.util.List;
 

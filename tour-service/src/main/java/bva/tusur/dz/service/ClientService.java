@@ -1,6 +1,7 @@
 package bva.tusur.dz.service;
 
-import bva.tusur.dz.dto.rs.GetClientInfoResponse;
+import bva.tusur.dz.model.rs.GetAllClientsResponse;
+import bva.tusur.dz.model.rs.GetClientInfoResponse;
 
 /**
  * Сервис для работы с данными клиентов
@@ -16,6 +17,13 @@ public interface ClientService {
      * @param phoneNumber ...
      */
     void addNewClient(String name, String surname, String patronymic, String phoneNumber);
+
+    /**
+     * Получение списка клиентов
+     *
+     * @return информация о клиенте
+     */
+    GetAllClientsResponse getAllClientsInfo();
 
     /**
      * Получение информации о клиенте

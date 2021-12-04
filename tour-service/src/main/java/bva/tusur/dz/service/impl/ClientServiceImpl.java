@@ -1,6 +1,7 @@
 package bva.tusur.dz.service.impl;
 
-import bva.tusur.dz.dto.rs.GetClientInfoResponse;
+import bva.tusur.dz.model.rs.GetAllClientsResponse;
+import bva.tusur.dz.model.rs.GetClientInfoResponse;
 import bva.tusur.dz.repositories.ClientRepository;
 import bva.tusur.dz.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,16 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void addNewClient(String name, String surname, String patronymic, String phoneNumber) {
         clientRepository.createNewClient(name, surname, patronymic, phoneNumber);
+    }
+
+    /**
+     * Получение списка клиентов
+     *
+     * @return информация о клиенте
+     */
+    @Override
+    public GetAllClientsResponse getAllClientsInfo() {
+        return clientRepository.getAllClientsFromDb();
     }
 
     /**

@@ -1,10 +1,12 @@
 package bva.tusur.dz.rest;
 
-import bva.tusur.dz.dto.rq.CreateClientRequest;
-import bva.tusur.dz.dto.rs.GetClientInfoResponse;
+import bva.tusur.dz.model.rq.CreateClientRequest;
+import bva.tusur.dz.model.rs.GetAllClientsResponse;
+import bva.tusur.dz.model.rs.GetClientInfoResponse;
 import bva.tusur.dz.service.ClientService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/clients")
 @Api(tags = "Клиенты")
+@Slf4j
 public class ClientRest {
 
     private final ClientService clientService;
@@ -22,7 +25,7 @@ public class ClientRest {
         this.clientService = clientService;
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     @ApiOperation("Добавление клиента")
     public ResponseEntity<?> createClient(@RequestBody CreateClientRequest request) {
         try {
@@ -37,6 +40,15 @@ public class ClientRest {
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(e.getMessage());
         }
+    }
+
+    @GetMapping()
+    @ApiOperation("Получение списка клиентов")
+    public GetAllClientsResponse getAllClients() {
+        log.debug("getAllClients started");
+        GetAllClientsResponse allClientsInfo = clientService.getAllClientsInfo();
+        log.debug("getAllClients finished");
+        return allClientsInfo;
     }
 
     @GetMapping("/get_client")

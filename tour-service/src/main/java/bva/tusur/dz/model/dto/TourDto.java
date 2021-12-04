@@ -1,4 +1,4 @@
-package bva.tusur.dz.dto;
+package bva.tusur.dz.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

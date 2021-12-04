@@ -1,6 +1,6 @@
-package bva.tusur.dz.dto.rs;
+package bva.tusur.dz.model.rs;
 
-import bva.tusur.dz.dto.TourDto;
+import bva.tusur.dz.model.dto.TourDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;

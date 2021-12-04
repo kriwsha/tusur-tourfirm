@@ -1,6 +1,6 @@
 package bva.tusur.dz.service.impl;
 
-import bva.tusur.dz.dto.TourDto;
+import bva.tusur.dz.model.dto.TourDto;
 import bva.tusur.dz.repositories.ToursRepository;
 import bva.tusur.dz.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;

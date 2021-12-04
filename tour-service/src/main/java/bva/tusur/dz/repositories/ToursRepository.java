@@ -1,6 +1,6 @@
 package bva.tusur.dz.repositories;
 
-import bva.tusur.dz.dto.TourDto;
+import bva.tusur.dz.model.dto.TourDto;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
