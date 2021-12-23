@@ -5,9 +5,9 @@ grant connect on database tourfirm to leader;
 grant connect on database tourfirm to employee;
 grant connect on database tourfirm to client;
 
-grant select, update, insert on all tables in schema tourfirm to leader;
+grant select, update, insert on all tables in schema public to leader;
 
-grant select on all tables in schema tourfirm to employee;
+grant select on all tables in schema public to employee;
 grant update, insert on clients to employee;
 grant update, insert on hotels to employee;
 grant update, insert on tours to employee;
