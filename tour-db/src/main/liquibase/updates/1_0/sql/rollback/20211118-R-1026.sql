@@ -1,3 +1,9 @@
-DROP TABLE clients;
-DROP TABLE employees;
-DROP TABLE hotels;
+drop table if exists sales;
+drop table if exists tours;
+drop table if exists hotels;
+drop table if exists cities;
+drop table if exists transport;
+drop table if exists employees;
+drop table if exists clients;
+drop table if exists countries;
+drop table if exists accommodation_types;
