@@ -18,3 +18,6 @@ grant select on hotels to client;
 grant select on cities to client;
 grant select on countries to client;
 grant select on accommodation_types to client;
+
+-- добавляем права на ковидный справочник
+grant select on covid_constraints to client;
