@@ -15,13 +15,10 @@ import java.util.List;
 @Accessors(chain = true)
 public class GetClientInfoResponse {
     @JsonProperty("name")
-    private String name;
-    @JsonProperty("surname")
-    private String surname;
-    @JsonProperty("patronymic")
-    private String patronymic;
+    private String fullName;
     @JsonProperty("phone_number")
     private String phoneNumber;
+    @Deprecated
     @JsonProperty("tours")
     private List<TourDto> tours;
 }

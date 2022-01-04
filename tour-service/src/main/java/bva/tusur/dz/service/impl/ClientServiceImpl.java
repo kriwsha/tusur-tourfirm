@@ -40,7 +40,7 @@ public class ClientServiceImpl implements ClientService {
      */
     @Override
     public GetAllClientsResponse getAllClientsInfo() {
-        return clientRepository.getAllClientsFromDb();
+        return new GetAllClientsResponse(clientRepository.getAllClientsFromDb());
     }
 
     /**

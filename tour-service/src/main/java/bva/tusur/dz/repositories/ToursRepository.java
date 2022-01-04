@@ -16,13 +16,13 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 
 @Component
 public class ToursRepository {
 
     @Qualifier("DSLContext")
-    private DSLContext jooq;
+    private final DSLContext jooq;
 
     private static final Tours TOURS = Tours.TOURS;
     private static final Hotels HOTELS = Hotels.HOTELS;
@@ -60,9 +60,9 @@ public class ToursRepository {
                     record.get(end));
             tours.add(
                     new TourDto(
-                            Objects.requireNonNull(record.get(countryName)).toString(),
-                            Objects.requireNonNull(record.get(cityName)).toString(),
-                            Objects.requireNonNull(record.get(price)).toString(),
+                            Optional.ofNullable(record.get(countryName)).orElse("unknown").toString(),
+                            Optional.ofNullable(record.get(cityName)).orElse("unknown").toString(),
+                            Optional.ofNullable(record.get(price)).orElse("unknown").toString(),
                             dates
                     ));
         }

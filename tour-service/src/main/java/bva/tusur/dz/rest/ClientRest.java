@@ -51,7 +51,7 @@ public class ClientRest {
         return allClientsInfo;
     }
 
-    @GetMapping("/client")
+    @GetMapping("/client-info")
     @ApiOperation("Получение информации о клиенте")
     public GetClientInfoResponse getClientInfo(
             @RequestParam("name") String name,
