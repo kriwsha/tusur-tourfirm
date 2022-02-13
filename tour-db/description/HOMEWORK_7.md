@@ -69,6 +69,10 @@
 > 
 > )
 > 
-> select t2.year_game, t2.sum_points + t2.prev_sum_points as p
+> select t2.year_game, t2.sum_points + t2.prev_sum_points as points
 > 
 > from t2;
+
+Результат:
+
+![Результат](img/hw7_4.JPG)
