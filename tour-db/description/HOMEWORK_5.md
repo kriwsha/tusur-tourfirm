@@ -13,8 +13,8 @@
 ![Схема базы данных](img/schema_3.JPG)
 
 #### 1. Напишите запрос по своей базе с регулярным выражением, добавьте пояснение, что вы хотите найти.
-Запрос на выборку имен и телефонов сотрудников 20-го филиала фирмы:
-> SELECT name, phone FROM employees WHERE filial = 20;
+Запрос на выборку республик:
+> SELECT * FROM countries WHERE name LIKE '%Республик%'';
 
 #### 2. Напишите запрос по своей базе с использованием LEFT JOIN и INNER JOIN, как порядок соединений в FROM влияет на результат? Почему?
 Запрос на получение данных о сотрудниках и их непосредственных руководителей
@@ -64,10 +64,37 @@
 
 #### 4. Напишите запрос с обновлением данные используя UPDATE FROM.
 
+В рамках текущей схемы не удалось придумать подходящий пример. 
 
+Поэтому синтетический пример. Допустим, в таблице __employees__ есть столбец, в котором хранится информация о количестве продаж (__sales_count__). Тогда можно апдейтить это значение следующим образом: 
+> UPDATE employees SET sales_count = sales_count + 1 FROM sales
+> WHERE accounts.name = 'Ivan Ivanov'
+> AND employees.id = sales.employee_id;
 
 #### 5. Напишите запрос для удаления данных с оператором DELETE используя join с другой таблицей с помощью using.
 
+Также не нашел удачного примера для текущей схемы.
 
+Синтетический пример.
+
+> DELETE
+> FROM tours T
+> USING hotel H
+> WHERE T.hotel_id = H.id AND
+> H.city_id = (SELECT id FROM cities WHERE name = 'NY');
 
 #### 6. Приведите пример использования утилиты COPY (по желанию)
+
+> copy countries(country_code, name, visa_need, covid_constraint)
+> 
+> from '/mnt/countries.csv'
+> 
+> delimiter ',' csv;
+
+[Файл со странами](../src/main/liquibase/updates/0_0/countries.csv):
+![Файл со странами](img/hw5_1.JPG)
+
+После добавления:
+![Схема базы данных](img/hw5_2.JPG)
+
+
