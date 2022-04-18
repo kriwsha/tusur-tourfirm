@@ -12,8 +12,11 @@
             http://www.liquibase.org/xml/ns/dbchangelog
             http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.3.xsd">
 
-    <include file="20211118-T-1026.xml" relativeToChangelogFile="true"/>
-    <include file="20211223-T-1600.xml" relativeToChangelogFile="true"/>
-    <include file="20220418-T-2146.xml" relativeToChangelogFile="true"/>
+    <changeSet id="20220418-T-2146" author="kriwsha">
+        <sqlFile path="sql/20220418-U-2146.sql" endDelimiter="/" relativeToChangelogFile="true"/>
+        <rollback>
+            <sqlFile path="sql/rollback/20220418-R-2146.sql" endDelimiter="/" relativeToChangelogFile="true"/>
+        </rollback>
+    </changeSet>
 
 </databaseChangeLog>

@@ -16,3 +16,5 @@ const TourInfo = ({tours}) => {
         </div>
     )
 }
+
+export default TourInfo;
