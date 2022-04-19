@@ -1,7 +1,25 @@
-## Описание
+# Educational Project "Software System for Travel Agency"
 
-Данный проект является курсовой работой по предмету "Базы данных".
 
-**Тема**: Информационная система турфирмы
+#### This is a final project of course "Databases"
 
-**Стек**: Java + Spring Boot + jOOQ + Liquibase 
+
+### Modules:
+
+- [Web UI](tour-web/tourfirm-front);
+- [REST API](tour-service);
+- [DB](tour-db).
+
+### Technologies:
+
+##### REST API:
+- [Java](https://www.java.com/) 
+- [Spring Boot](https://spring.io/projects/spring-boot) 
+- [jOOQ](https://www.jooq.org/)
+
+##### Web UI:
+- [ReactJS](https://reactjs.org/)
+
+##### Database
+- [Liquibase](https://www.liquibase.org/)
+- [PostgreSQL](https://www.postgresql.org/)
