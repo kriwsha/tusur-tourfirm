@@ -10,3 +10,5 @@
 #### - [Домашнее задание №6](description/HOMEWORK_6.md)
 #### - [Домашнее задание №7](description/HOMEWORK_7.md)
 #### - [Домашнее задание №8](description/HOMEWORK_8.md)
+...
+#### - [Домашнее задание №20](description/HOMEWORK_20.md)
