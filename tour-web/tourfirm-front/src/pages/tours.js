@@ -4,12 +4,12 @@ import './tours.css';
 
 class Tours extends Component {
     render() {
-        // const allTours = this.fetchAllTours();
-        // return (
-        //     <div>
-        //         <TourInfo tours={this.state.tours} />
-        //     </div>
-        // );
+        const allTours = this.fetchAllTours();
+        return (
+            <div>
+                <TourInfo tours={this.state.tours} />
+            </div>
+        );
     }
 
     state = {

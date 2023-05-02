@@ -1,0 +1,20 @@
+version: '2.1'
+
+services:
+  postgres:
+    build: ./tour-db
+    hostname: pghost
+    environment:
+      POSTGRES_USER: tusur
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: tusur
+    volumes:
+      - ./pgd:/var/lib/pgd/data
+    ports:
+      - "5432:5432"
+  app:
+    build: ./tour-service
+    hostname: back
+  front:
+    build: ./tour-web
+    hostname: front

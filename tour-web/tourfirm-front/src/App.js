@@ -1,21 +1,35 @@
 import React, {Component} from "react";
 import { Route, Routes } from "react-router-dom"
 import './App.css';
-import Tours from './pages/tours'
-import Login from './pages/login'
 
 class App extends Component {
-  render() {
+    state = {
+        clients: []
+    };
 
-    return (
-        <div className="App">
-            <Routes>
-                <Route path='/home' element={ <Tours /> } />
-                <Route path='/login' element={ <Login /> } />
-            </Routes>
-        </div>
-    );
-  }
+    async componentDidMount() {
+        const response = await fetch('/clients');
+        const body = await response.json();
+        this.setState({clients: body});
+    }
+
+    render() {
+        const {clients} = this.state;
+        return (
+            <div className="App">
+                <header className="App-header">
+                    <img src={logo} className="App-logo" alt="logo" />
+                    <div className="App-intro">
+                        <h2>Clients</h2>
+                        {clients.map(client =>
+                            <div key={client.id}>
+                                {client.name} ({client.email})
+                            </div>
+                        )}
+                    </div>
+                </header>
+            </div>
+        );
+    }
 }
-
 export default App;

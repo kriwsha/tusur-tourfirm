@@ -32,6 +32,6 @@ public interface ClientService {
      * @param phoneNumber ...
      * @return информация о клиенте
      */
-    GetClientInfoResponse getClientByRequest(String name, String phoneNumber);
+    GetClientInfoResponse getClientByRequest(String phoneNumber);
 
 }

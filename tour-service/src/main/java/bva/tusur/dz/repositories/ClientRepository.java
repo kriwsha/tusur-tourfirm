@@ -58,7 +58,7 @@ public class ClientRepository {
         return clientsList;
     }
 
-    public GetClientInfoResponse getClientInfoByParams(String name, String phoneNumber) {
+    public GetClientInfoResponse getClientInfoByParams(String phoneNumber) {
         // TODO: 04.12.2021 for test
         return new GetClientInfoResponse("alex bloom",
                 "1234567",

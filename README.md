@@ -8,7 +8,8 @@
 
 - [Web UI](tour-web/tourfirm-front);
 - [REST API](tour-service);
-- [DB](tour-db).
+- [DB](tour-db);
+- [ETL](tour-etl)
 
 ### Technologies:
 

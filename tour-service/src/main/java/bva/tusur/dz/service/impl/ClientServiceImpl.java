@@ -51,7 +51,7 @@ public class ClientServiceImpl implements ClientService {
      * @return информация о клиенте
      */
     @Override
-    public GetClientInfoResponse getClientByRequest(String name, String phoneNumber) {
-        return clientRepository.getClientInfoByParams(name, phoneNumber);
+    public GetClientInfoResponse getClientByRequest(String phoneNumber) {
+        return clientRepository.getClientInfoByParams(phoneNumber);
     }
 }

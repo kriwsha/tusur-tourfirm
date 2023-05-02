@@ -44,19 +44,19 @@ public class ClientRest {
 
     @GetMapping()
     @ApiOperation("Получение списка клиентов")
-    public GetAllClientsResponse getAllClients() {
+    public ResponseEntity<GetAllClientsResponse> getAllClients() {
         log.debug("getAllClients started");
         GetAllClientsResponse allClientsInfo = clientService.getAllClientsInfo();
         log.debug("getAllClients finished");
-        return allClientsInfo;
+        return ResponseEntity.ok(allClientsInfo);
     }
 
     @GetMapping("/client-info")
     @ApiOperation("Получение информации о клиенте")
-    public GetClientInfoResponse getClientInfo(
-            @RequestParam("name") String name,
+    public ResponseEntity<GetClientInfoResponse> getClientInfo(
             @RequestParam("phone_number") String phoneNumber) {
-        return clientService.getClientByRequest(name, phoneNumber);
+        GetClientInfoResponse rs = clientService.getClientByRequest(phoneNumber);
+        return ResponseEntity.ok(rs);
     }
 
 }

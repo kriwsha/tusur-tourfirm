@@ -10,6 +10,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Accessors(chain = true)
 public class TourDto {
+    private Integer id;
     private String country;
     private String city;
     private String cost;
