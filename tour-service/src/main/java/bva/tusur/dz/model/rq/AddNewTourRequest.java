@@ -13,17 +13,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class AddNewTourRequest {
 
-    @JsonProperty(value = "name", required = true)
-    @ApiModelProperty(value = "Имя клиента", example = "Иван", required = true)
-    private String name;
-    @JsonProperty(value = "surname", required = true)
-    @ApiModelProperty(value = "Фамилия клиента", example = "Иванов", required = true)
-    private String surname;
-    @JsonProperty(value = "patronymic", required = true)
-    @ApiModelProperty(value = "Отчество клиента", example = "Иванович")
-    private String patronymic;
-    @JsonProperty(value = "phone_number", required = true)
-    @ApiModelProperty(value = "Номер телефона", example = "89997776655", required = true)
-    private String phoneNumber;
+
 
 }

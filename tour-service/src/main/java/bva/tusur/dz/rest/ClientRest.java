@@ -28,26 +28,18 @@ public class ClientRest {
     @PostMapping()
     @ApiOperation("Добавление клиента")
     public ResponseEntity<?> createClient(@RequestBody CreateClientRequest request) {
-        try {
-            clientService.addNewClient(
-                    request.getName(),
-                    request.getSurname(),
-                    request.getPatronymic(),
-                    request.getPhoneNumber());
-            return ResponseEntity.status(HttpStatus.OK).build();
-        } catch (Exception e) {
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(e.getMessage());
-        }
+        clientService.addNewClient(
+                request.getName(),
+                request.getSurname(),
+                request.getPatronymic(),
+                request.getPhoneNumber());
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping()
     @ApiOperation("Получение списка клиентов")
     public ResponseEntity<GetAllClientsResponse> getAllClients() {
-        log.debug("getAllClients started");
         GetAllClientsResponse allClientsInfo = clientService.getAllClientsInfo();
-        log.debug("getAllClients finished");
         return ResponseEntity.ok(allClientsInfo);
     }
 

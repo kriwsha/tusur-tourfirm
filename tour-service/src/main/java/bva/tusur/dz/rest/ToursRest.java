@@ -30,18 +30,16 @@ public class ToursRest {
     @GetMapping()
     @ApiOperation("Получение всех актуальных туров")
     public ResponseEntity<GetAllToursResponse> getTourList() {
-        log.debug("getTourList started");
         List<TourDto> currentTours = tourService.getCurrentTours();
         GetAllToursResponse rs = new GetAllToursResponse(currentTours);
-        log.debug("getTourList finished");
         return ResponseEntity.ok(rs);
     }
 
     @PostMapping()
     @ApiOperation("Добавление нового тура")
     public ResponseEntity<?> addTour(@RequestBody AddNewTourRequest request) {
-        // TODO: 04.12.2021 for test
-        return ResponseEntity.status(HttpStatus.OK).build();
+
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping()
@@ -53,12 +51,14 @@ public class ToursRest {
             @RequestParam("dateFrom") String dateFrom,
             @RequestParam("dateTo") String dateTo
     ) {
-        // TODO: 04.12.2021 for test
-        return ResponseEntity.noContent().build();
+        List<TourDto> currentTours = tourService.getToursByFilter(
+                country, city, cost, dateFrom, dateTo);
+        GetAllToursResponse rs = new GetAllToursResponse(currentTours);
+        return ResponseEntity.ok(rs);
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation("Получение туров по фильтру")
+    @ApiOperation("Получение конкретного тура")
     public ResponseEntity<?> removeTourById(
             @PathVariable("id") Integer id
     ) {
