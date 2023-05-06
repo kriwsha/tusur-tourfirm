@@ -35,5 +35,17 @@ public interface TourService {
      * ...
      * @param tour ...
      */
-    void addNewTour(TourDto tour);
+    void addNewTour(
+            String hotelId,
+            int transportId,
+            String dateFrom,
+            String dateTo,
+            int price
+    );
+
+    /**
+     * ...
+     * @param tourId tour id.
+     */
+    void removeTour(int tourId);
 }

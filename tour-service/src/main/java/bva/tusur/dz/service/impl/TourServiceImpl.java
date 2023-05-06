@@ -30,4 +30,27 @@ public class TourServiceImpl implements TourService {
     public List<TourDto> getCurrentTours() {
         return repo.getAvailableTours();
     }
+
+    @Override
+    public List<TourDto> getToursByFilter(String country,
+                                          String city,
+                                          String cost,
+                                          String dateFrom,
+                                          String dateTo) {
+        return null;
+    }
+
+    @Override
+    public void addNewTour(String hotelId,
+                           int transportId,
+                           String dateFrom,
+                           String dateTo,
+                           int price) {
+
+    }
+
+    @Override
+    public void removeTour(int tourId) {
+
+    }
 }

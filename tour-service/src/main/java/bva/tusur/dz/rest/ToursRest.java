@@ -38,7 +38,13 @@ public class ToursRest {
     @PostMapping()
     @ApiOperation("Добавление нового тура")
     public ResponseEntity<?> addTour(@RequestBody AddNewTourRequest request) {
-
+        tourService.addNewTour(
+                request.getHotelId(),
+                request.getTransportId(),
+                request.getDateFrom(),
+                request.getDateTo(),
+                request.getPrice()
+        );
         return ResponseEntity.ok().build();
     }
 
@@ -62,7 +68,7 @@ public class ToursRest {
     public ResponseEntity<?> removeTourById(
             @PathVariable("id") Integer id
     ) {
-        // TODO: 04.12.2021 for test
-        return ResponseEntity.noContent().build();
+        tourService.removeTour(id);
+        return ResponseEntity.ok().build();
     }
 }

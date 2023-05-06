@@ -1,22 +1,27 @@
 package bva.tusur.dz.repositories;
 
 import bva.tusur.dz.jooq.generated.tables.Clients;
-import bva.tusur.dz.model.rs.GetAllClientsResponse;
+import bva.tusur.dz.jooq.generated.tables.records.ClientsRecord;
 import bva.tusur.dz.model.rs.GetClientInfoResponse;
 import org.jooq.DSLContext;
 import org.jooq.Record2;
 import org.jooq.Result;
-import org.jooq.SelectJoinStep;
 import org.jooq.tools.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class ClientRepository {
 
+    /**
+     * jooq.
+     */
     @Qualifier("DSLContext")
     private final DSLContext jooq;
 
@@ -27,6 +32,13 @@ public class ClientRepository {
         this.jooq = jooq;
     }
 
+    /**
+     * Create new client.
+     * @param name ...
+     * @param surname ...
+     * @param patronymic ...
+     * @param phoneNumber ...
+     */
     public void createNewClient(String name, String surname, String patronymic, String phoneNumber) {
         // TODO: 03.01.2022 Решить, как передавать ФИО
         jooq.insertInto(CLIENTS,
@@ -35,6 +47,10 @@ public class ClientRepository {
                 .execute();
     }
 
+    /**
+     * Get list of clients.
+     * @return list of clients.
+     */
     public List<GetClientInfoResponse> getAllClientsFromDb() {
         String fullName = "fullName";
         String phone = "phone";
@@ -44,24 +60,34 @@ public class ClientRepository {
                 .from(CLIENTS)
                 .fetch();
 
-        List<GetClientInfoResponse> clientsList = new ArrayList<>();
-        for (Record2<String, String> record : records) {
-            clientsList.add(
-                    new GetClientInfoResponse(
-                            Optional.ofNullable(record.get(fullName)).orElse("unknown").toString(),
-                            Optional.ofNullable(record.get(phone)).orElse("unknown").toString(),
-                            Collections.emptyList()
-                    )
-            );
-        }
-
-        return clientsList;
+        return records.stream()
+                .map(record -> new GetClientInfoResponse(
+                        Optional.ofNullable(record.get(fullName)).orElse("unknown").toString(),
+                        Optional.ofNullable(record.get(phone)).orElse("unknown").toString(),
+                        Collections.emptyList()
+                ))
+                .collect(Collectors.toList());
     }
 
+    /**
+     * Get client by phone number.
+     * @param phoneNumber phone number.
+     * @return client.
+     */
     public GetClientInfoResponse getClientInfoByParams(String phoneNumber) {
-        // TODO: 04.12.2021 for test
-        return new GetClientInfoResponse("alex bloom",
-                "1234567",
-                Collections.emptyList());
+        Result<ClientsRecord> fetch = jooq.selectFrom(CLIENTS)
+                .where(CLIENTS.PHONE.eq(phoneNumber))
+                .fetch();
+        List<GetClientInfoResponse> lst = fetch.stream()
+                .map(
+                        x -> new GetClientInfoResponse(
+                                x.get(CLIENTS.NAME),
+                                x.get(CLIENTS.PHONE),
+                                Collections.emptyList()
+                                // TODO: 06.05.2023 add collection of tours
+                        )
+                )
+                .collect(Collectors.toList());
+        return lst.isEmpty() ? null : lst.get(0);
     }
 }
